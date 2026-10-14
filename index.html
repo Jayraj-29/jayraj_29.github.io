@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ed">
+  <meta name="description" content="Jayraj is a Business Analytics master's candidate at Babson College with experience turning data into practical business decisions.">
+  <title>Jayraj — Business Analytics &amp; Strategy</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f5f3ed;
+      --white: #fffefa;
+      --ink: #162923;
+      --muted: #65736c;
+      --line: #d9ded6;
+      --green: #315d49;
+      --green-dark: #234634;
+      --lime: #d6ec9b;
+      --orange: #e6a366;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "Aptos", "Segoe UI", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1100px, calc(100% - 48px)); margin-inline: auto; }
+
+    .topbar {
+      position: sticky;
+      z-index: 10;
+      top: 0;
+      border-bottom: 1px solid rgb(217 222 214 / 82%);
+      background: rgb(245 243 237 / 92%);
+      backdrop-filter: blur(14px);
+    }
+    .nav {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      font-size: .95rem;
+      font-weight: 750;
+      letter-spacing: -.04em;
+      text-decoration: none;
+    }
+    .brand span { color: var(--green); }
+    .nav-links { display: flex; gap: 30px; align-items: center; }
+    .nav-links a {
+      color: var(--muted);
+      font-size: .82rem;
+      font-weight: 650;
+      text-decoration: none;
+      transition: color .2s ease;
+    }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--green); }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(72px, 12vw, 142px) 0 90px;
+    }
+    .hero::after {
+      position: absolute;
+      z-index: -1;
+      top: 40px;
+      right: max(-12vw, -120px);
+      width: clamp(270px, 43vw, 550px);
+      aspect-ratio: 1;
+      border: 1px solid #dce1d4;
+      border-radius: 50%;
+      box-shadow: 0 0 0 42px rgb(220 225 212 / 28%), 0 0 0 84px rgb(220 225 212 / 17%);
+      content: "";
+    }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      margin: 0 0 22px;
+      color: var(--green);
+      font-size: .75rem;
+      font-weight: 750;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { width: 27px; height: 1px; background: var(--green); content: ""; }
+    h1 {
+      max-width: 760px;
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(3.4rem, 9.5vw, 7.7rem);
+      font-weight: 400;
+      letter-spacing: -.075em;
+      line-height: .96;
+    }
+    h1 em { color: var(--green); font-weight: 400; }
+    .hero-copy {
+      max-width: 570px;
+      margin: 28px 0 0;
+      color: #53635b;
+      font-size: clamp(1.03rem, 2vw, 1.22rem);
+      line-height: 1.75;
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: .86rem;
+    }
+    .hero-meta span { display: inline-flex; align-items: center; gap: 8px; }
+    .hero-meta svg { width: 16px; height: 16px; color: var(--green); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+    .button {
+      display: inline-flex;
+      min-height: 47px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 19px;
+      border: 1px solid var(--green);
+      border-radius: 3px;
+      background: var(--green);
+      color: white;
+      font-size: .85rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); background: var(--green-dark); }
+    .button.secondary { background: transparent; color: var(--green); }
+    .button.secondary:hover { background: #e9ede4; }
+    .button svg { width: 16px; height: 16px; }
+
+    .proof {
+      border-block: 1px solid var(--line);
+      background: var(--white);
+    }
+    .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+    .proof-item { padding: 27px 30px; border-right: 1px solid var(--line); }
+    .proof-item:first-child { padding-left: 0; }
+    .proof-item:last-child { border-right: 0; }
+    .proof-number {
+      display: block;
+      color: var(--green);
+      font-family: var(--serif);
+      font-size: 2rem;
+      letter-spacing: -.05em;
+      line-height: 1.2;
+    }
+    .proof-label { color: var(--muted); font-size: .8rem; }
+
+    section { padding: 92px 0; }
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 42px;
+    }
+    .section-heading .eyebrow { margin-bottom: 12px; }
+    h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 5vw, 3.7rem);
+      font-weight: 400;
+      letter-spacing: -.06em;
+      line-height: 1.1;
+    }
+    .section-note { max-width: 330px; margin: 0 0 3px; color: var(--muted); font-size: .9rem; }
+
+    .experience { background: var(--white); }
+    .timeline { border-top: 1px solid var(--line); }
+    .role {
+      display: grid;
+      grid-template-columns: minmax(150px, .7fr) minmax(0, 2fr);
+      gap: 34px;
+      padding: 30px 0 32px;
+      border-bottom: 1px solid var(--line);
+    }
+    .role-date { padding-top: 4px; color: var(--muted); font-size: .8rem; }
+    .role-titleline { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 5px 20px; }
+    h3 { margin: 0; font-size: 1.16rem; letter-spacing: -.025em; line-height: 1.4; }
+    .role-titleline .place { color: var(--muted); font-size: .8rem; }
+    .role-position { margin: 4px 0 13px; color: var(--green); font-size: .86rem; font-weight: 700; }
+    .role ul { display: grid; gap: 8px; margin: 0; padding-left: 19px; color: #53635b; font-size: .9rem; }
+    .role li::marker { color: var(--orange); }
+    strong { color: var(--ink); font-weight: 750; }
+
+    .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .project {
+      display: flex;
+      min-height: 240px;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 26px;
+      border: 1px solid var(--line);
+      background: var(--white);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .project:hover { transform: translateY(-3px); box-shadow: 0 14px 30px rgb(22 41 35 / 7%); }
+    .project-top { display: flex; justify-content: space-between; gap: 20px; }
+    .project-index { color: #9aa59b; font-family: var(--serif); font-size: .92rem; }
+    .project-date { color: var(--muted); font-size: .75rem; }
+    .project h3 { margin-top: 21px; font-size: 1.3rem; }
+    .project p { max-width: 470px; margin: 9px 0 21px; color: #53635b; font-size: .88rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    .tag {
+      padding: 4px 9px;
+      border: 1px solid #dce3d7;
+      border-radius: 2px;
+      color: var(--green);
+      font-size: .7rem;
+      font-weight: 650;
+    }
+    .project.featured { grid-column: 1 / -1; min-height: 205px; background: #edf1e8; }
+    .project.featured p { max-width: 700px; }
+
+    .education { padding-top: 78px; background: var(--green-dark); color: white; }
+    .education .eyebrow { color: var(--lime); }
+    .education .eyebrow::before { background: var(--lime); }
+    .education h2 { margin-bottom: 36px; }
+    .education-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .edu-card {
+      padding: 25px;
+      border: 1px solid rgb(255 255 255 / 23%);
+      background: rgb(255 255 255 / 5%);
+    }
+    .edu-card .edu-date { color: var(--lime); font-size: .76rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+    .edu-card h3 { margin: 11px 0 5px; font-family: var(--serif); font-size: 1.42rem; font-weight: 400; }
+    .edu-card p { margin: 0; color: rgb(255 255 255 / 72%); font-size: .85rem; }
+    .edu-card .edu-detail { margin-top: 14px; color: white; }
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0 35px;
+      margin-top: 42px;
+      border-top: 1px solid rgb(255 255 255 / 23%);
+    }
+    .skill-row { padding: 17px 0; border-bottom: 1px solid rgb(255 255 255 / 23%); }
+    .skill-row h3 { margin-bottom: 5px; color: var(--lime); font-size: .79rem; letter-spacing: .04em; text-transform: uppercase; }
+    .skill-row p { margin: 0; color: rgb(255 255 255 / 82%); font-size: .86rem; }
+
+    footer { padding: 25px 0; background: #19372a; color: rgb(255 255 255 / 65%); font-size: .77rem; }
+    .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; }
+    .footer-inner span:first-child { color: white; font-weight: 700; }
+
+    :focus-visible { outline: 3px solid #bd8b50; outline-offset: 4px; }
+    @media (max-width: 700px) {
+      .wrap { width: min(100% - 36px, 540px); }
+      .nav { min-height: 62px; }
+      .nav-links { gap: 15px; }
+      .nav-links a { font-size: .75rem; }
+      .hero { padding: 83px 0 67px; }
+      .hero::after { top: 35px; right: -190px; opacity: .7; }
+      .hero-copy { max-width: 460px; }
+      .proof-item { padding: 20px 13px; }
+      .proof-item:first-child { padding-left: 0; }
+      .proof-number { font-size: 1.65rem; }
+      .proof-label { font-size: .72rem; line-height: 1.4; }
+      section { padding: 69px 0; }
+      .section-heading { display: block; margin-bottom: 29px; }
+      .section-note { margin-top: 13px; }
+      .role { grid-template-columns: 1fr; gap: 8px; padding: 23px 0; }
+      .role-date { font-size: .74rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project { min-height: 220px; padding: 22px; }
+      .project.featured { grid-column: auto; min-height: 220px; }
+      .education-grid, .skills { grid-template-columns: 1fr; }
+      .education { padding-top: 66px; }
+    }
+    @media (max-width: 420px) {
+      .wrap { width: calc(100% - 30px); }
+      .nav-links { gap: 10px; }
+      .nav-links a { font-size: .7rem; }
+      .brand { font-size: .87rem; }
+      .hero-actions .button { flex: 1; padding-inline: 12px; }
+      .proof-number { font-size: 1.4rem; }
+      .proof-item { padding-inline: 9px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav wrap" aria-label="Main navigation">
+      <a class="brand" href="#home">JAYRAJ<span>.</span></a>
+      <div class="nav-links">
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero wrap" id="home" aria-labelledby="hero-title">
+      <p class="eyebrow">Business analytics · Strategy</p>
+      <h1 id="hero-title">Good questions.<br><em>Clear answers.</em></h1>
+      <p class="hero-copy">
+        I’m Jayraj, a Business Analytics graduate student at Babson College. I turn messy data and complex problems into practical decisions—with experience across manufacturing, sustainability, and early-stage fintech.
+      </p>
+      <div class="hero-meta">
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          Boston, MA
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5v-16Z"/><path d="M4 17a2.5 2.5 0 0 1 2.5-2.5H20M8 7h8"/></svg>
+          M.S. Candidate · Class of 2027
+        </span>
+      </div>
+      <div class="hero-actions">
+        <a class="button" href="#experience">Explore my experience
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </a>
+        <a class="button secondary" href="#projects">Selected work</a>
+      </div>
+    </section>
+
+    <div class="proof" aria-label="Career highlights">
+      <div class="proof-grid wrap">
+        <div class="proof-item"><span class="proof-number">15%</span><span class="proof-label">lower inventory spend</span></div>
+        <div class="proof-item"><span class="proof-number">80%</span><span class="proof-label">faster reporting turnaround</span></div>
+        <div class="proof-item"><span class="proof-number">92%</span><span class="proof-label">model accuracy across 10,000+ images</span></div>
+      </div>
+    </div>
+
+    <section class="experience" id="experience" aria-labelledby="experience-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Where I’ve made a difference</p>
+            <h2 id="experience-title">Experience</h2>
+          </div>
+          <p class="section-note">A mix of analytical rigor, hands-on execution, and clear communication with stakeholders.</p>
+        </div>
+        <div class="timeline">
+          <article class="role">
+            <div class="role-date">Apr 2026 – May 2026</div>
+            <div>
+              <div class="role-titleline"><h3>Green Leaf Trust</h3><span class="place">Ahmedabad, India</span></div>
+              <p class="role-position">Sustainability Intern</p>
+              <ul>
+                <li>Managed a 10-person team within a 100-member NGO, delivering three ecological restoration initiatives on schedule and within budget.</li>
+                <li>Translated environmental goals into stakeholder presentations and community programs, improving outreach effectiveness by <strong>30%</strong> across three campaigns.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="role">
+            <div class="role-date">May 2025 – Aug 2025</div>
+            <div>
+              <div class="role-titleline"><h3>Shivangan Food &amp; Pharma Products</h3><span class="place">Gandhinagar, India</span></div>
+              <p class="role-position">Business Analyst Intern</p>
+              <ul>
+                <li>Analyzed <strong>15,000+ production records</strong> across five manufacturing lines using SQL and Excel, uncovering <strong>INR 3.2L in monthly cost variations</strong> and informing a <strong>15% reduction in inventory spend</strong>.</li>
+                <li>Redesigned reporting workflows, cutting turnaround by <strong>80%—from three days to six hours</strong>—and delivered recommendations to senior leadership.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="role">
+            <div class="role-date">Jun 2024 – Aug 2024</div>
+            <div>
+              <div class="role-titleline"><h3>Equillect</h3><span class="place">Ahmedabad, India</span></div>
+              <p class="role-position">Co-Founder &amp; Strategic Lead</p>
+              <ul>
+                <li>Shaped go-to-market strategy for a fintech seed-funding marketplace using insights from <strong>25+ user interviews</strong> to validate product-market fit and guide a data-informed pivot.</li>
+                <li>Built a brand-first market-entry framework and led a cross-functional team of four across product, design, and operations.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-title">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Ideas made tangible</p>
+            <h2 id="projects-title">Selected work</h2>
+          </div>
+          <p class="section-note">Projects that bring together data, technology, and real-world problem solving.</p>
+        </div>
+        <div class="projects-grid">
+          <article class="project featured">
+            <div>
+              <div class="project-top"><span class="project-index">01 / Featured</span><span class="project-date">Dec 2025 – Jan 2026</span></div>
+              <h3>Code Sync — Collaborative Development Platform</h3>
+              <p>Architected a real-time collaborative coding platform for 50+ concurrent users. Integrated the GitHub Copilot API to reduce average error-resolution time by 40%.</p>
+            </div>
+            <div class="tags"><span class="tag">Node.js</span><span class="tag">React</span><span class="tag">Socket.IO</span><span class="tag">AI-assisted development</span></div>
+          </article>
+          <article class="project">
+            <div>
+              <div class="project-top"><span class="project-index">02</span><span class="project-date">Mar 2026 – May 2026</span></div>
+              <h3>CourtLegacy</h3>
+              <p>Built a cross-platform tournament app bringing player profiles, fixtures, and results together for tennis, pickleball, and badminton. Released to Google Play closed testing.</p>
+            </div>
+            <div class="tags"><span class="tag">Flutter</span><span class="tag">Firebase</span><span class="tag">Mobile product</span></div>
+          </article>
+          <article class="project">
+            <div>
+              <div class="project-top"><span class="project-index">03</span><span class="project-date">Mar 2025 – Apr 2025</span></div>
+              <h3>Plantiction</h3>
+              <p>Engineered a convolutional neural network with 92% accuracy across 10,000+ images, automating the detection of 15 plant diseases.</p>
+            </div>
+            <div class="tags"><span class="tag">Deep learning</span><span class="tag">CNN</span><span class="tag">10,000+ images</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="education" id="education" aria-labelledby="education-title">
+      <div class="wrap">
+        <p class="eyebrow">Learning with intent</p>
+        <h2 id="education-title">Education &amp; toolkit</h2>
+        <div class="education-grid">
+          <article class="edu-card">
+            <span class="edu-date">Sep 2026 – Dec 2027 · Boston, MA</span>
+            <h3>Babson College</h3>
+            <p>F.W. Olin Graduate School of Business</p>
+            <p class="edu-detail"><strong>M.S. in Business Analytics Candidate</strong><br>Coursework: Business Analytics, Strategy &amp; Consulting, Data-Driven Decision Making, Financial Modeling.</p>
+            <p class="edu-detail">Consulting Club member · 10+ case interviews · Led two client simulation projects.</p>
+          </article>
+          <article class="edu-card">
+            <span class="edu-date">Sep 2022 – Apr 2026 · Gandhinagar, India</span>
+            <h3>LDRP Institute of Technology and Research</h3>
+            <p>Bachelor of Engineering in Computer Engineering</p>
+            <p class="edu-detail"><strong>CGPA 7.98/10 · Sem-8 SPI 8.78/10</strong></p>
+            <p class="edu-detail"><strong>GRE 335/340</strong> · Quant 169 · Verbal 166</p>
+          </article>
+        </div>
+        <div class="skills" aria-label="Skills and competencies">
+          <div class="skill-row"><h3>Strategy &amp; consulting</h3><p>Hypothesis-driven analysis · Structured problem-solving · Stakeholder management</p></div>
+          <div class="skill-row"><h3>Analytics &amp; tools</h3><p>SQL · Python (Pandas) · Tableau · Advanced Excel · PowerPoint</p></div>
+          <div class="skill-row"><h3>Product &amp; engineering</h3><p>Flutter · Firebase · Cross-platform app deployment</p></div>
+          <div class="skill-row"><h3>AI-assisted development</h3><p>Rapid prototyping with Claude and GitHub Copilot</p></div>
+          <div class="skill-row"><h3>Languages</h3><p>English (Fluent) · Gujarati (Native) · Hindi (Fluent)</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner wrap">
+      <span>Jayraj</span>
+      <span>Business analytics · Strategy · Boston, MA</span>
+    </div>
+  </footer>
+</body>
+</html>
